@@ -158,7 +158,13 @@ function Details({ data, allData, setAllData }: any) {
                 height={20}
                 className="cursor-pointer"
               />
-              <p className="mx-3 font-semibold flex-1">{obj.title}</p>
+              <p
+                className={`mx-3 font-semibold flex-1 ${
+                  obj.status == "pending" ? "" : "line-through text-gray-400"
+                }`}
+              >
+                {obj.title}
+              </p>
               <Image
                 alt="trash"
                 src="/assets/black-trash.png"
