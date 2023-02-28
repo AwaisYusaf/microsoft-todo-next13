@@ -39,6 +39,33 @@ function Details({ data, allData, setAllData }: any) {
       addTodoItem();
     }
   }
+  function toggleStatus(object: any) {
+    let updatedData = [...allData];
+    for (let i = 0; i < updatedData.length; i++) {
+      if (updatedData[i].name == data.name) {
+        for (let j = 0; j < data.data.length; j++) {
+          if (updatedData[i].data[j].id == object.id) {
+            updatedData[i].data[j].status =
+              object.status == "pending" ? "completed" : "pending";
+          }
+        }
+      }
+    }
+    setAllData(updatedData);
+  }
+
+  function deleteTodo(object: any) {
+    let updatedData = [...allData];
+    for (let i = 0; i < updatedData.length; i++) {
+      if (updatedData[i].name == data.name) {
+        updatedData[i].data = updatedData[i].data.filter(
+          (item: any) => item.id != object.id
+        );
+      }
+    }
+    setAllData(updatedData);
+  }
+
   const AddTodoModal = () => {
     return (
       <div
@@ -120,8 +147,13 @@ function Details({ data, allData, setAllData }: any) {
               className="flex items-center p-3 w-2/4 border-b-2 border-gray-100 hover:bg-gray-100"
             >
               <Image
+                onClick={() => toggleStatus(obj)}
                 alt="check"
-                src="/assets/black-unchecked.png"
+                src={
+                  obj.status == "pending"
+                    ? "/assets/black-unchecked.png"
+                    : "/assets/black-checked.png"
+                }
                 width={20}
                 height={20}
                 className="cursor-pointer"
@@ -133,6 +165,7 @@ function Details({ data, allData, setAllData }: any) {
                 width={20}
                 height={20}
                 className="cursor-pointer"
+                onClick={() => deleteTodo(obj)}
               />
             </figure>
           );
