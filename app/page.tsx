@@ -104,7 +104,7 @@ export default function Home() {
       {/* Left side  */}
       <section className="w-2/12 border-r-2 border-gray-300 min-h-screen">
         {/* user info */}
-        <div className="flex items-center p-4">
+        <div className="flex items-center p-4 lg:flex-row flex-col w-full">
           <Image
             src="/images/dp.jpeg"
             alt="user-img"
@@ -118,14 +118,15 @@ export default function Home() {
             alt="search"
             width={20}
             height={20}
+            className="lg:flex hidden"
           />
         </div>
-        <div className=" flex flex-col px-2">
+        <div className=" flex flex-col lg:px-2 px-0">
           {allData.map((obj: any, index: number) => {
             return (
               <p
                 key={index}
-                className="cursor-pointer capitalize border-b-[0.5px] p-3 border-gray-300 hover:bg-gray-300 transition ease-in duration-200"
+                className="font-sm pl-1 cursor-pointer capitalize border-b-[0.5px] lg:p-3 px-0 py-2 border-gray-300 hover:bg-gray-300 transition ease-in duration-200"
                 onClick={() => setSelectedList(allData[index])}
               >
                 {obj.name}
@@ -137,10 +138,16 @@ export default function Home() {
           )}
 
           <div
-            className="bg-purple-300 px-4 py-2 self-center mt-4 rounded cursor-pointer hover:bg-purple-800 hover:text-white transition ease-in duration-100"
+            className="bg-purple-300 lg:flex hidden px-4 py-2 self-center mt-4 rounded cursor-pointer hover:bg-purple-800 hover:text-white transition ease-in duration-100"
             onClick={addTodoList}
           >
             Add List
+          </div>
+          <div
+            onClick={addTodoList}
+            className="bg-purple-300 lg:hidden px-4 py-2 self-center mt-4 rounded-full flex justify-center items-center cursor-pointer hover:bg-purple-800 hover:text-white transition ease-in duration-100"
+          >
+            +
           </div>
         </div>
       </section>

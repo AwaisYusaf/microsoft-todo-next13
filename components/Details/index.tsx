@@ -115,7 +115,7 @@ function Details({ data, allData, setAllData }: any) {
   };
 
   return (
-    <section className="w-10/12 flex flex-col items-center">
+    <section className="w-10/12 flex flex-col items-center lg:mt-0 mt-6">
       {/* Info header */}
       <div className="flex justify-between w-10/12 mt-6">
         <div>
@@ -144,7 +144,7 @@ function Details({ data, allData, setAllData }: any) {
           return (
             <figure
               key={index}
-              className="flex items-center p-3 w-2/4 border-b-2 border-gray-100 hover:bg-gray-100"
+              className="flex items-center p-3 lg:w-2/4 w-full border-b-2 border-gray-100 hover:bg-gray-100"
             >
               <Image
                 onClick={() => toggleStatus(obj)}
